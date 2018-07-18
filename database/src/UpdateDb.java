@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Scanner;
 
 
 public class UpdateDb {
@@ -15,9 +16,14 @@ public class UpdateDb {
                             "ashwin", "123");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
+            Scanner reader = new Scanner(System.in);
+            System.out.println("Enter a id: ");
+            int n = reader.nextInt();
+            System.out.println("Enter the new name: ");
+            String s = reader.next();
 
             stmt = c.createStatement();
-            String sql = "UPDATE employees set name = 'Mohan' where id=3;";
+            String sql = "UPDATE employees set name='"+s+"' where id='"+n+"'";
             stmt.executeUpdate(sql);
             c.commit();
 
